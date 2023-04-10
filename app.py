@@ -9,6 +9,11 @@ bookmarks = [
     {'id': 3, 'title': 'Yahoo', 'url': 'https://www.yahoo.com'},
 ]
 
+users = [
+    {"username": "admin", "password": "admin"},
+    {"username": "user", "password": "user"},
+]
+
 
 @app.route('/')
 def index():
@@ -27,6 +32,21 @@ def add_bookmark():
         return render_template('index.html', bookmarks=bookmarks)
     else:
         return render_template('add_bookmark.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    return render_template("login.html")
+
+
+@app.route('/logout')
+def logout():
+    pass
+
+
+@app.route('/register')
+def register():
+    pass
 
 
 if __name__ == '__main__':
