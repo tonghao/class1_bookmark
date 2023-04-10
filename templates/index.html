@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bookmarks</title>
+  </head>
+  <body>
+    <h1>Bookmarks</h1>
+    <ul>
+      {% for bookmark in bookmarks %}
+      <li><a href="{{ bookmark.url }}">{{ bookmark.title }}</a></li>
+      {% endfor %}
+    </ul>
+    <a href="/add_bookmark">Add Bookmark</a>
+  </body>
+</html>
