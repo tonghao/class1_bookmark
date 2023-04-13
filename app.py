@@ -25,9 +25,6 @@ def index():
             if bookmark['user'] == session['username']
         ]
         return render_template('index.html', bookmarks=user_bookmarks)
-    else:
-        return redirect('/login')
-
     return render_template('index.html', bookmarks=bookmarks)
 
 
