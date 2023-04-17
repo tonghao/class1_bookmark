@@ -1,3 +1,5 @@
+import functools
+
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 
 app = Flask(__name__)
@@ -16,6 +18,16 @@ users = [
 ]
 
 
+def require_login(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if 'username' not in session:
+            return redirect(url_for("login"))
+        return view(**kwargs)
+
+    return wrapped_view
+
+
 @app.route('/')
 def index():
     if 'username' in session:
@@ -29,15 +41,17 @@ def index():
 
 
 @app.route('/add_bookmark', methods=['GET', 'POST'])
+@require_login
 def add_bookmark():
     if request.method == 'POST':
         title = request.form['title']
         url = request.form['url']
         id = bookmarks[-1]['id'] + 1
+        username = session['username']
         if not url.startswith('http'):
             url = 'https://' + url
-        bookmarks.append({'id': id, 'title': title, 'url': url})
-        return render_template('index.html', bookmarks=bookmarks)
+        bookmarks.append({'id': id, 'title': title, 'url': url, 'user': username})
+        return redirect(url_for("index"))
     else:
         return render_template('add_bookmark.html')
 
