@@ -1,0 +1,54 @@
+body {
+    background-color: #fff;
+    color: #333;
+    margin: 0;  
+  }
+
+  nav {
+    background-color: #000;
+    padding: .5em;
+    position: sticky;
+    top: 0;
+    
+  }
+  
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+  }
+
+  
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: .5em 1em;
+    min-width: 70px;
+  }
+
+  .content {
+    padding: 4em;
+  }
+
+  #username {
+    margin-bottom: .5em;
+  }
+  
+  #password {
+    margin-bottom: .5em;
+  }
+    
+.flash {
+    color: red;
+}
+
+.form-container {
+    background-color: lightgray;
+    max-width: 250px;
+    padding: 1em;
+    border-radius: 4px;
+}
